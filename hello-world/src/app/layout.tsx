@@ -35,6 +35,7 @@ export default function RootLayout({
         >
           <p>header</p>
         </header>
+        
         {children}
         <footer
           style={{
