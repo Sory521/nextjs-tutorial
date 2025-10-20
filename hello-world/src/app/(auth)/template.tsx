@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import "./styles.css";
 // import "./globals.css";
 
 
@@ -33,6 +35,7 @@ export default function AuthLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [input, setInput] = useState("");
   const pathname = usePathname();
   return (
     <html lang="en">
@@ -41,6 +44,9 @@ export default function AuthLayout({
       >
 
         <div>
+          <div>
+            <input value={input} onChange={(e)=> setInput(e.target.value)}/>
+          </div>
           {navLikns.map((link) => {
             const isActive = pathname === link.href || (pathname.startsWith(link.href) && link.href !== "/");
             return (
